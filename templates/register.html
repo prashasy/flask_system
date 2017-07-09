@@ -1,0 +1,43 @@
+
+
+{% extends "base.html" %}
+{% block content %}
+
+{% for message in form.name.errors %}
+ {{message}}
+{% endfor %}
+<style type="text/css">
+#Login{
+	background-color: green;
+	font-family: courier;
+	border:2px solid black;
+	position:relative;
+	left:475px;
+	text-align:center;
+	width:300px;
+	color:white;
+}
+</style>
+
+<center><h2>Form</h2></center>
+<form action="" method="POST">
+	<div id="Login">
+<p id='2'>{{form.hidden_tag()}}</p>
+<p id='3'>{{form.name.label}} </p>
+<p id='4'>{{form.name}}</p>
+<p id='5'>{{form.enrollment.label}}</p>
+<p id='6'>{{form.enrollment}}</p>
+<p id="7">{{form.phone.label}}</p>
+<p id="8">{{form.phone}}</p>
+<p id="9">{{form.username.label}}</p>
+<p id="10">{{form.username}}</p>
+<p id="11">{{form.password.label}}</p>
+<p id="12">{{form.password}}</p>
+
+<p id='1'>{{form.submit}}</p>
+
+</div>
+</form>
+{% endblock %}
+
+
