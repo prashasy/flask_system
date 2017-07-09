@@ -1,14 +1,49 @@
 {% extends "base.html" %}
 
+{% block css %}
+<style type="text/css">
+.FormWrapper{
+  background-color: green;
+  font-family: courier;
+  position:relative;
+  top:100px;
+  left:450px;
+  width:300px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+</style>
+
+{% endblock %}
+
+{% if form %}
+
+{% for message in form.uname.errors %}
+ {{message}}
+{% endfor %}
+
+{% for message in form.pw.errors %}
+ {{message}}
+{% endfor %}
+
+{% endif %}
+
+<p style="color:red;">{{msg}}</p>
+
 {% block content %}
-  <h1>Sign In</h1>
+<p style="color:red;">{{msg}}</p>
+  <center><h1>Sign In</h1></center>
+  <div class="FormWrapper">
   <form action="" method="post" name="login">
       {{ form.hidden_tag() }}
-      <p>
-          Please enter your OpenID:<br>
-          {{ form.openid(size=80) }}<br>
-      </p>
-      <p>{{ form.remember_me }} Remember Me</p>
-      <p><input type="submit" value="Sign In"></p>
+      <p id='1'>{{form.uname.label}}</p>
+      <p id='2'>{{form.uname}}</p>
+      <p id='3'>{{form.pw.label}}</p>
+      <p id='4'>{{form.pw}}</p>
+      <p id='5'>{{form.submit}}</p>
+      
   </form>
+</div>
 {% endblock %}

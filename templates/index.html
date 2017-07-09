@@ -1,9 +1,7 @@
-<html>
-<head>
-<title>Home!!</title>
-</head>
-<body>
-<h1>Welcome</h1>
-<a href='login.html'>Login </a>
-</body>
-</html>
+
+{% extends "base.html" %} 
+{% block content %}
+
+<h1>Welcome {% if user %} {{user}}  {% endif %} </h1>
+
+{% endblock %}

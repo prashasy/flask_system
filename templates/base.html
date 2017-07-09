@@ -1,13 +1,33 @@
 <html>
   <head>
     {% if title %}
-    <title>{{ title }} - microblog</title>
+    <title>{{ title }}</title>
     {% else %}
-    <title>Welcome to microblog</title>
+    <title>LeaveSlip System</title>
     {% endif %}
+
+<style type="text/css">
+.NavBar div{
+  float:left;
+  width:10%;
+}
+
+</style>
+
+{% block css %}
+{% endblock %}
+
   </head>
   <body>
-    <div>Microblog: <a href="/">Home</a></div>
+    <div class="NavBar">
+      
+      <div><a href="/">Home</a></div>
+      <div><a href="/register">Register</a></div>
+      <div><a href="/login">Login</a></div>
+      <div><a href="/logout">Logout</a></div>
+
+    </div>
+    
     <hr>
     {% block content %}{% endblock %}
   </body>
