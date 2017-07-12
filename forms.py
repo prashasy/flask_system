@@ -18,3 +18,14 @@ class LoginForm(_Form):
 	submit=SubmitField("Login")
 
 
+class faculty_signup_form(_Form):
+	username=TextField("Choose Username",[validators.Required("Plese Enter Your Username!!")])
+	password=PasswordField("Chosse a password",[validators.Required("Plese Enter Your Password!!")])
+	name=TextField("Name",[validators.Required("Plese Enter Your Name!!")])
+	phone=TelField("Your Contact Number please!",[validators.Required("Please enter your phone number")])
+	submit=SubmitField("Submit")
+
+
+
+
+
