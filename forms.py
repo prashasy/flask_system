@@ -26,6 +26,19 @@ class faculty_signup_form(_Form):
 	submit=SubmitField("Submit")
 
 
+class Leave_Request_Form(_Form):
+	enrollment=IntegerField("Enrollment Number",[validators.Required("Please enter your enrollment number!!")],widget=NumberInput())
+	leave_start=DateField("Leave From:",[validators.Required("Please enter the date!!")])
+	leave_end=DateField("Leave Till:",[validators.Required("Please enter the date!!")])
+	reason=TextField("Reason for Leave:",[validators.Required("Please tell us a reason for your leave")])
+	address=TextField("Adress while on Leave:",[validators.Required("Please tell us your address while at leave")])
+	submit=SubmitField("Submit")	
+
+class Query_Form(_Form):
+	enrollment=IntegerField("Enrollment Number",[validators.Required("Please enter your enrollment number!!")],widget=NumberInput())
+	submit=SubmitField("Submit")
+	
+
 
 
 

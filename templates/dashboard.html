@@ -1,5 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
+
 <center><h1>Dashboard {{session['login_pass']}} </h1></center>
 <center> <h2>Welcome {{session['login_user']}}</h2></center>
+<form action="/query" method="POST">
+	<div id="Query">
+{{query_form.enrollment.label}}
+{{query_form.enrollment}}
+{{query_form.submit}}
+</div>
+</form>
+<center><h2>Form</h2></center>
+<form action="/submit" method="POST">
+	<div id="Login">
+<p id='2'>{{form.hidden_tag()}}</p>
+<p id='3'>{{form.leave_start.label}} </p>
+<p id='4'>{{form.leave_start}}</p>
+<p id='5'>{{form.enrollment.label}}</p>
+<p id='6'>{{form.enrollment}}</p>
+<p id="7">{{form.leave_end.label}}</p>
+<p id="8">{{form.leave_end}}</p>
+<p id="9">{{form.reason.label}}</p>
+<p id="10">{{form.reason}}</p>
+<p id="11">{{form.address.label}}</p>
+<p id="12">{{form.address}}</p>
+
+<p id='1'>{{form.submit}}</p>
+
+</div>
+</form>
+
+
+
+
+
 {% endblock %}
+

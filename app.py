@@ -2,6 +2,7 @@ import sqlite3 as sql
 from flask import Flask
 from flask import Flask, flash, redirect, render_template, request, session, abort
 from forms import *
+from datetime import datetime, date
 
 
 appy=Flask(__name__)
@@ -132,7 +133,9 @@ def home():
 			if(session['login_pass']=="admin"):
 				return redirect('/admin')
 			else:
-				return render_template('dashboard.html')
+				query_form=Query_Form()
+				form=Leave_Request_Form()
+				return render_template('dashboard.html',form=form,query_form=query_form)
 
 
 	else:
@@ -223,9 +226,29 @@ def admin():
 		else:
 			return insertData(form,"faculty")
 
+@appy.route('/submit',methods=['POST'])
+def submit():
+	form=Leave_Request_Form(request.form)
+	enrollment=form.enrollment.data
+	start=form.leave_start.data
+	end=form.leave_end.data
+	reason=form.reason.data
+	address=form.address.data
+	con=sql.connect('leave_requests.db',detect_types=sql.PARSE_DECLTYPES)
+	con.execute("insert into requests(enrollment, request_stamp,leave_start,leave_end, reason_for_leave,address_on_leave,approval) values(?,?,?,?,?,?,?)  ",(enrollment,datetime.now(),start,end,reason,address,"pending") )
+	con.commit()
+	con.close()
+	return redirect('/')
 
 
 
+@appy.route('/query',methods=['POST'])
+def query():
+	form=Query_Form(request.form)
+	enrollment=form.enrollment.data
+	con=sql.connect('leave_requests.db',detect_types=sql.PARSE_DECLTYPES)
+	result=con.execute('select * from requests where enrollment=? ',(enrollment,))
+	return render_template('query_results.html',result=result)
 
 
 

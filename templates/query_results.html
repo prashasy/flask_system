@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block css%}
+<style type="text/css">
+
+table{
+	position:relative;
+	top:20px;
+	border:2px solid black;
+	background-color:green;
+	color:black;
+
+}
+#return{
+	position:relative;
+	top:50px;
+}
+
+</style>
+
+{%endblock%}
+
+{% block content %}
+<br>
+{% if result is not defined %}
+{{"Empty"}}
+
+{% else %}
+
+<table>
+	<tr>
+		<th>Serial</th>
+		<th>Request Time</th>
+		<th>Leave From</th>
+		<th>Leave Till</th>
+		<th>Reason For Leave</th>
+		<th>Address while on leave</th>
+		<th> Approval</th>
+	</tr>
+	{% for row in result %}
+	<tr>
+		<td>{{row[0]}}</td>
+		<td>{{row[1]}} </td>
+		<td>{{row[2]}} </td>
+		<td>{{row[3]}} </td>
+		<td>{{row[4]}} </td>
+		<td>{{row[5]}} </td>
+		<td>{{row[6]}} </td>
+		<td>{{row[7]}} </td>
+	</tr>
+	{% endfor %}
+
+</table>
+
+
+{% endif %}
+<a id='return' href="/">Return to Dashboard</a>
+{% endblock %}
