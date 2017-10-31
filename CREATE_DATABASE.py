@@ -28,6 +28,4 @@ cur.execute('create table requests(serial integer primary key,enrollment integer
 print ("Table requests created Successfully")
 con.commit()
 print("All operations done Successfully!!")
-
-
 con.close()
