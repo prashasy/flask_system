@@ -17,7 +17,7 @@ cur=con.cursor()
 cur.execute("create table login_data (id integer primary key,username text,password text)")
 print("Table login_data created successfully!!")
 cur.execute("create table user_data (id integer primary key, name text, phone numeric, user_pass text )")
-print("Table user_data created successfulyy!!")
+print("Table user_data crea    ted successfulyy!!")
 con.commit()
 print("All operations done Successfully!!")
 
