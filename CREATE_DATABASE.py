@@ -1,6 +1,6 @@
 import sqlite3 as sql
 
-print("STUDENT DATABASE!!")
+print("STUDENT DATABASE !!")
 con=sql.connect('student_database.db')
 print ("Database Created Successfully!!")
 cur=con.cursor()
