@@ -1,8 +1,8 @@
 import sqlite3 as sql
 
-print("STUDENT DATABASE!!")
+print("STUDENT DATABASE !!")
 con=sql.connect('student_database.db')
-print ("Database Created Successfully!!")
+print ("Database Created Successfully !!")
 cur=con.cursor()
 cur.execute("create table login_data (enrollment numeric,username text,password text)")
 print("Table login_data created successfully!!")
