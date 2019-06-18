@@ -4,7 +4,7 @@ from forms import *
 from datetime import datetime, date
 
 
-appy=Flask(__name__)
+app=Flask(__name__)
 
 
 
@@ -260,8 +260,8 @@ def test():
 
 
 if(__name__=='__main__'):
-	appy.secret_key="Hi"
-	appy.run(debug=True)
+	app.secret_key="Hi"
+	app.run(port=os.getenv("PORT"))
 
 
 
