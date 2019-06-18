@@ -125,7 +125,7 @@ def do_admin_login(form):
 
 
 
-@appy.route('/',methods=['GET','POST'])
+@app.route('/',methods=['GET','POST'])
 def home():
 	if ((session.get('logged_in'))):
 		if(session.get('login_pass')):
@@ -142,14 +142,14 @@ def home():
 
 
 
-@appy.route('/<username>')
+@app.route('/<username>')
 def profile(username):
 		if():
 			return "<h1>Welcome {} !!</h1>".format(uname)
 
 
 
-@appy.route('/register',methods=['GET','POST'])
+@app.route('/register',methods=['GET','POST'])
 def register():
 	if(session.get('logged_in')):
 		return redirect('/')
@@ -163,7 +163,7 @@ def register():
 		return render_template('register.html',form=form)
 
 
-@appy.route('/login',methods=['GET','POST'])
+@app.route('/login',methods=['GET','POST'])
 def login():
 	if(session.get('logged_in')):
 		return redirect('/')
@@ -180,14 +180,14 @@ def login():
 		else:
 			return render_template('login.html',form=form,msg=m)
 
-@appy.route('/logout')
+@app.route('/logout')
 def logout():
 	if(session.get('logged_in')):
 		return do_logout() 
 	else:
 		return redirect('/')
 
-@appy.route('/admin_login',methods=['GET','POST'])
+@app.route('/admin_login',methods=['GET','POST'])
 def admin_login():
 	if(session.get('logged_in')):
 		return redirect('/')
@@ -202,7 +202,7 @@ def admin_login():
 			return render_template('admin_login.html',form=form)
 
 
-@appy.route('/admin',methods=['GET','POST'])  #ADMIN DASHBOARD
+@app.route('/admin',methods=['GET','POST'])  #ADMIN DASHBOARD
 def admin():
 	if ((session.get('logged_in'))):
 		if(session['login_pass']=="student"):
@@ -225,7 +225,7 @@ def admin():
 		else:
 			return insertData(form,"faculty")
 
-@appy.route('/submit',methods=['POST'])
+@app.route('/submit',methods=['POST'])
 def submit():
 	form=Leave_Request_Form(request.form)
 	enrollment=form.enrollment.data
@@ -241,7 +241,7 @@ def submit():
 
 
 
-@appy.route('/query',methods=['POST'])
+@app.route('/query',methods=['POST'])
 def query():
 	form=Query_Form(request.form)
 	enrollment=form.enrollment.data
@@ -249,7 +249,7 @@ def query():
 	result=con.execute('select * from requests where enrollment=? ',(enrollment,))
 	return render_template('query_results.html',result=result)
 
-@appy.route('/test',methods=['GET','POST'])
+@app.route('/test',methods=['GET','POST'])
 def test():
 	if(request.method=="GET"):
 		render_template('try.html')
