@@ -1,5 +1,4 @@
 import sqlite3 as sql
-from flask import Flask
 from flask import Flask, flash, redirect, render_template, request, session, abort
 from forms import *
 from datetime import datetime, date
@@ -250,6 +249,13 @@ def query():
 	result=con.execute('select * from requests where enrollment=? ',(enrollment,))
 	return render_template('query_results.html',result=result)
 
+@appy.route('/test',methods=['GET','POST'])
+def test():
+	if(request.method=="GET"):
+		render_template('try.html')
+	elif (request.method=="POST"):
+		value=request.form.getlist('check')
+		render_template('try2.html',list=value)
 
 
 
